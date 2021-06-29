@@ -93,7 +93,7 @@
 						<!-- <exclude>com/happy/**/*Converter.*</exclude> -->
 						<!-- <exclude>com/happy/**/enums/*</exclude> -->
 						<exclude>com/happy/hotel/dto/response/BaseResponse.class</exclude>
-						<exclude>com/happy/hotel/HappyHotelApplication.class</exclude>
+<!-- 						<exclude>com/happy/hotel/HappyHotelApplication.class</exclude> -->
 					</excludes>
 				</configuration>
 				<executions>
