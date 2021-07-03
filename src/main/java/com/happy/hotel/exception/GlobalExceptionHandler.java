@@ -17,7 +17,7 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(HappyHotelException.class)
 	public ResponseEntity<?> happyHotelExceptionHandler(HappyHotelException ex) {
-		log.error("HappyHotelException ===> {}", ex);
+		log.error("HappyHotelException ===> {}", ex.getLocalizedMessage());
 		return new ResponseEntity<>(BaseResponse.error(ex.getMessage()), ex.getStatus());
 	}
 
@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public ResponseEntity<?> httpMessageNotReadableExceptionHandler(HttpMessageNotReadableException ex) {
-		log.error("HttpMessageNotReadableException ===> {}", ex);
+		log.error("HttpMessageNotReadableException ===> {}", ex.getLocalizedMessage());
 		BaseResponse<String> response = new BaseResponse<>();
 		response.setError(true);
 		if (ex.getMessage().contains("Required request body is missing:")) {

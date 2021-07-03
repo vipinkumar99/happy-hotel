@@ -12,11 +12,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonInclude(value = Include.NON_EMPTY)
+@JsonInclude(value = Include.NON_NULL)
 public class BaseResponse<T> {
 	private String msg;
 	private T data;
-	private Boolean error;
+	private boolean error;
 
 	public BaseResponse(T data) {
 		this("success", data, false);

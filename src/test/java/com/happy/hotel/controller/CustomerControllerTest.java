@@ -7,7 +7,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -185,9 +184,8 @@ class CustomerControllerTest {
 		url = url + "/" + CUSTOMER_ID;
 		when(customerService.update(Mockito.anyInt(), Mockito.any(CustomerRequest.class))).thenReturn(response);
 		mockMvc.perform(put(url).contentType(MediaType.APPLICATION_JSON).content(json))
-				.andExpect(jsonPath("$.error").value(false)).andDo(print())
-				.andExpect(jsonPath("$.msg").value("success")).andExpect(jsonPath("$.data").isNotEmpty())
-				.andExpect(jsonPath("$.data.name").value("vipin"));
+				.andExpect(jsonPath("$.error").value(false)).andExpect(jsonPath("$.msg").value("success"))
+				.andExpect(jsonPath("$.data").isNotEmpty()).andExpect(jsonPath("$.data.name").value("vipin"));
 	}
 
 }

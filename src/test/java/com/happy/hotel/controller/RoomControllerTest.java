@@ -7,7 +7,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -189,8 +188,7 @@ class RoomControllerTest {
 		url = url + "/" + ROOM_ID;
 		when(roomService.update(Mockito.anyInt(), Mockito.any(RoomRequest.class))).thenReturn(response);
 		mockMvc.perform(put(url).contentType(MediaType.APPLICATION_JSON).content(json))
-				.andExpect(jsonPath("$.error").value(false)).andDo(print())
-				.andExpect(jsonPath("$.msg").value("success")).andExpect(jsonPath("$.data").isNotEmpty())
-				.andExpect(jsonPath("$.data.capacity").value(5));
+				.andExpect(jsonPath("$.error").value(false)).andExpect(jsonPath("$.msg").value("success"))
+				.andExpect(jsonPath("$.data").isNotEmpty()).andExpect(jsonPath("$.data.capacity").value(5));
 	}
 }
